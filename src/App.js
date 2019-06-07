@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import TermList from './Components/TermList';
+
+class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      terms: []
+    };
+  }
+
+  componentDidMount() {
+    axios.get('https://api.myjson.com/bins/125clh')
+         .then(response => {
+           this.setState({
+              terms: response.data.terms
+           })
+         })
+         .catch(error => {
+           console.log('Error fetching and parsing data', error);
+         })
+  }
+
+  render() {
+    console.log(this.state.terms);
+    return (
+      <div>
+        <h1>Flashcard App!</h1>
+        <TermList data={this.state.terms} />
+      </div>
+    )
+  }
 }
 
 export default App;
