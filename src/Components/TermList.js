@@ -5,7 +5,11 @@ const TermList = props => {
   const results = props.data;
 
   let terms = results.map((term, index) =>
-    <Term key={index} name={term} />
+    <Term
+      index={index}
+      name={term}
+      deleteTerm={props.deleteTerm}
+    />
   )
 
   return (

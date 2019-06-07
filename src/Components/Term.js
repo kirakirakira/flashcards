@@ -2,7 +2,9 @@ import React from 'react';
 
 const Term = props => (
   <li>
-    <h3>{props.name}</h3>
+    <div key={props.index}>
+      <h3>{props.name} <div onClick={() => {props.deleteTerm(props.index)}}>delete</div></h3>
+    </div>
   </li>
 )
 

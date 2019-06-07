@@ -28,8 +28,23 @@ class App extends Component {
 
   addTerm = (term) => {
     const { terms } = this.state;
-
     terms.push(term);
+
+    axios.put('https://api.myjson.com/bins/125clh',
+          { "terms": terms })
+         .then(response => {
+           this.setState({
+             terms: response.data.terms
+           })
+         })
+         .catch(error => {
+           console.log('Error putting and fetching data', error);
+         })
+  }
+
+  deleteTerm (index) {
+    const { terms } = this.state;
+    terms.splice(index, 1);
 
     axios.put('https://api.myjson.com/bins/125clh',
           { "terms": terms })
@@ -48,7 +63,7 @@ class App extends Component {
     return (
       <div>
         <h1>Flashcard App!</h1>
-        <TermList data={this.state.terms} />
+        <TermList data={this.state.terms} deleteTerm={this.deleteTerm.bind(this) }/>
         <AddTermForm addTerm={this.addTerm.bind(this)} />
       </div>
     )
