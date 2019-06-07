@@ -10,7 +10,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      terms: []
+      terms: [],
+      pendingTerm: 'hi'
     };
   }
 
@@ -63,8 +64,13 @@ class App extends Component {
     return (
       <div>
         <h1>Flashcard App!</h1>
-        <TermList data={this.state.terms} deleteTerm={this.deleteTerm.bind(this) }/>
-        <AddTermForm addTerm={this.addTerm.bind(this)} />
+        <TermList
+          data={this.state.terms}
+          deleteTerm={this.deleteTerm.bind(this)}
+        />
+        <AddTermForm
+          addTerm={this.addTerm.bind(this)}
+        />
       </div>
     )
   }

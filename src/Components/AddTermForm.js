@@ -8,6 +8,12 @@ class AddTermForm extends Component {
     }
   }
 
+  componentDidMount () {
+    this.setState({
+      termInput: this.props.pendingTerm
+    })
+  }
+
   render() {
     return (
       <form onSubmit={ (event) => {
@@ -21,6 +27,7 @@ class AddTermForm extends Component {
           id="term"
           value={this.state.termInput}
           onChange={ (event) => {
+            event.preventDefault();
             this.setState({
               termInput: event.target.value
             })
