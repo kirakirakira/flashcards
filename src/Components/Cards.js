@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Cards = props => {
+  console.log(props.data);
   let cards = props.data.map((card) => {
-    return <li key={card.id}>{card.name}</li>
+    return <li key={card.id}>{card.term}</li>
   });
-  console.log(cards);
 
   return (
     <div>
