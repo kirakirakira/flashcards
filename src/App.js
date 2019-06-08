@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom';
 import './App.css';
-import axios from 'axios';
+import API from './API';
+
+import Home from './Components/Home';
+import Cards from './Components/Cards';
+import Card from './Components/Card';
+
+import { DefaultCards } from './data/cards';
+
+import NewCardForm from './Components/NewCardForm';
+import EditCardForm from './Components/EditCardForm';
 
 import AddTermForm from './Components/AddTermForm';
+import EditTermForm from './Components/EditTermForm';
 import TermList from './Components/TermList';
 
 class App extends Component {
@@ -11,67 +26,93 @@ class App extends Component {
     super();
     this.state = {
       terms: [],
-      pendingTerm: 'hi'
+      pendingTerm: '',
+      pendingIndex: null,
+      isEditing: false
     };
   }
 
   componentDidMount() {
-    axios.get('https://api.myjson.com/bins/125clh')
-         .then(response => {
-           this.setState({
-              terms: response.data.terms
-           })
-         })
-         .catch(error => {
-           console.log('Error fetching and parsing data', error);
-         })
+
   }
 
-  addTerm = (term) => {
+  addTerm = (term, index) => {
+    term = this.state.pendingTerm;
+    index = this.state.pendingIndex;
     const { terms } = this.state;
-    terms.push(term);
 
-    axios.put('https://api.myjson.com/bins/125clh',
-          { "terms": terms })
-         .then(response => {
-           this.setState({
-             terms: response.data.terms
-           })
-         })
-         .catch(error => {
-           console.log('Error putting and fetching data', error);
-         })
+    if (this.state.isEditing) {
+      terms.splice(index, 1, term);
+    } else {
+      terms.splice(index, 0, term);
+    }
+
+    API.add(terms);
   }
 
   deleteTerm (index) {
     const { terms } = this.state;
     terms.splice(index, 1);
 
-    axios.put('https://api.myjson.com/bins/125clh',
-          { "terms": terms })
-         .then(response => {
-           this.setState({
-             terms: response.data.terms
-           })
-         })
-         .catch(error => {
-           console.log('Error putting and fetching data', error);
-         })
+    API.delete(terms);
+  }
+
+  editTerm (index) {
+    console.log(index);
+    this.setState({
+      terms: this.state.terms,
+      pendingTerm: this.state.terms[index],
+      pendingIndex: index,
+      isEditing: true
+    })
+  }
+
+  updateTerm(value, index) {
+    const newTerms = this.state.terms.slice();
+    newTerms[index] = value;
+
+    console.log(index, value);
+    console.log(newTerms);
+    console.log(this.state.terms);
+
+    this.setState({
+      isEditing: false,
+      terms: newTerms
+    });
   }
 
   render() {
-    console.log(this.state.terms);
     return (
-      <div>
-        <h1>Flashcard App!</h1>
-        <TermList
-          data={this.state.terms}
-          deleteTerm={this.deleteTerm.bind(this)}
-        />
-        <AddTermForm
-          addTerm={this.addTerm.bind(this)}
-        />
-      </div>
+      <BrowserRouter>
+        <div>
+          <h1>Flashcard App!</h1>
+
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/cards" render={ ()=> <Cards data= { DefaultCards } />} />
+            <Route path="/cards/:id/:card" component={Card} />
+            <Route path="/new" component={NewCardForm} />
+            <Route path="/edit/:id/:card" component={EditCardForm} />
+          </Switch>
+
+          {/* <TermList
+            data={this.state.terms}
+            editTerm={this.editTerm.bind(this)}
+            deleteTerm={this.deleteTerm.bind(this)}
+          />
+          {this.state.isEditing ?
+            <EditTermForm
+              pendingIndex={this.state.pendingIndex}
+              pendingTerm={this.state.pendingTerm}
+              updateTerm={this.updateTerm.bind(this)}
+            />
+          :
+            <AddTermForm
+              addTerm={this.addTerm.bind(this)}
+            />
+          } */}
+        </div>
+      </BrowserRouter>
     )
   }
 }

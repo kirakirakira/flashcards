@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-class AddTermForm extends Component {
+class EditTermForm extends Component {
   constructor(props) {
-    console.log('creating add term form');
+    console.log('creating edit term form');
+    console.log(props.pendingTerm);
     super();
     this.state = {
       termInput: props.pendingTerm
@@ -13,7 +14,7 @@ class AddTermForm extends Component {
     return (
       <form onSubmit={ (event) => {
         event.preventDefault();
-        this.props.addTerm(this.state.termInput, this.props.pendingIndex);
+        this.props.updateTerm(this.state.termInput, this.props.pendingIndex);
         this.setState({termInput: ''})
       }}>
         <label>Term: </label>
@@ -34,4 +35,4 @@ class AddTermForm extends Component {
   }
 }
 
-export default AddTermForm;
+export default EditTermForm;

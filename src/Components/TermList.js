@@ -6,8 +6,10 @@ const TermList = props => {
 
   let terms = results.map((term, index) =>
     <Term
+      key={index}
       index={index}
       name={term}
+      editTerm={props.editTerm}
       deleteTerm={props.deleteTerm}
     />
   )
