@@ -1,11 +1,12 @@
 import React from 'react';
-import { NavLink, Redirect, Route } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 
 import FlashCardFront from './FlashCardFront';
 import FlashCardBack from './FlashCardBack';
 
 const FlashCard = ({match}) => {
   console.log("I rendered FlashCard");
+  console.log(match.params);
   return (
     <div>
       <div>
