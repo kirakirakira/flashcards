@@ -11,6 +11,7 @@ import Home from './Components/Home';
 import Card from './Components/Card';
 import CardList from './Components/CardList';
 import FlashCard from './Components/FlashCard';
+import Test from './Components/Test';
 
 import defaultCards from './data/cards';
 
@@ -36,6 +37,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/cards" render={() => <CardList cards={this.state.cards} />} />
             <Route path="/cards/:index" render={({ match }) => <Card card={this.state.cards[match.params.index]} />} />
+            <Route path="/test" render={() => <Test cards={this.state.cards} />} />
             <Route path="/new" component={NewCardForm} />
             <Route path="/edit/:index" component={EditCardForm} />
           </Switch>
