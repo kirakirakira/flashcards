@@ -1,15 +1,24 @@
 import React from 'react';
+import { NavLink, Route } from 'react-router-dom';
 
-const Card = ({match}) => {
-  console.log("hi there");
-  let name = match.params.card;
-  let id = match.params.id;
+import FlashCard from './FlashCard';
 
-  console.log(`id: ${id}, name: ${name}`);
+const Card = (props) => {
+  // console.log("hi there");
+  // let name = match.params.card;
+  // let id = match.params.id;
+  //
+  // console.log(`id: ${id}, name: ${name}`);
+
+  let index = props.index;
+  let term = props.term;
+  console.log("I rendered Card");
 
   return (
     <div>
-      <p>{name} and {id}</p>
+      <li><NavLink to={`/cards/${index}/${term}`}>{term}</NavLink></li>
+
+
     </div>
   )
 }

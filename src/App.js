@@ -10,6 +10,7 @@ import API from './API';
 import Home from './Components/Home';
 import Cards from './Components/Cards';
 import Card from './Components/Card';
+import FlashCard from './Components/FlashCard';
 
 import { DefaultCards } from './data/cards';
 
@@ -90,7 +91,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/cards" render={ ()=> <Cards data= { DefaultCards } />} />
-            <Route path="/cards/:id/:card" component={Card} />
+            <Route path="/cards/:id/:card" component={FlashCard} />
             <Route path="/new" component={NewCardForm} />
             <Route path="/edit/:id/:card" component={EditCardForm} />
           </Switch>
