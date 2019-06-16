@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter,
   Route,
   Switch
 } from 'react-router-dom';
@@ -30,36 +29,36 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    if (this.state.cards.length > 0) {
+  async componentDidMount() {
+    if (this.state.uri === '') {
+      const response = await fetch('https://api.myjson.com/bins', {
+        method: 'POST',
+        body: JSON.stringify(defaultCards),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const json = await response.json();
+      this.setState({ uri: json.uri });
 
+      this.get();
     } else {
-      axios.post('https://api.myjson.com/bins',
-            {
-              defaultCards
-            })
-            .then(response => {
-              console.log(response);
-              console.log(response.data.uri);
-              this.setState({
-                cards: defaultCards,
-                uri: response.data.uri
-              })
-              console.log(this.state.uri);
-              console.log(this.state.cards);
-            })
-            .catch(error => {
-              console.log('Error posting data', error);
-            })
+      this.get();
     }
+  }
+
+  async get() {
+    const response = await fetch(this.state.uri);
+    const json = await response.json();
+    this.setState({ cards: json, got:true });
   }
 
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          <h1>Flashcard App!</h1>
+      <div>
+        <h1>Flashcard App!</h1>
 
+        {this.state.got &&
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/cards" render={() => <CardList cards={this.state.cards} />} />
@@ -67,10 +66,10 @@ class App extends Component {
             <Route path="/testall" render={() => <TestAll cards={this.state.cards} />} />
             <Route path="/testrandom" render={() => <TestRandom cards={this.state.cards} />} />
             <Route path="/new" component={NewCardForm} />
-            <Route path="/edit/:index" component={EditCardForm} />
+            <Route path="/edit/:index" render={({ match }) => <EditCardForm history={this.props.history} cards={this.state.cards} match={match} uri={this.state.uri} />} />
           </Switch>
-        </div>
-      </BrowserRouter>
+        }
+      </div>
     )
   }
 }

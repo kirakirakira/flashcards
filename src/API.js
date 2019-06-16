@@ -1,7 +1,11 @@
 import axios from 'axios';
 import defaultCards from './data/cards';
 
-class API {
+export default class API {
+  print() {
+    console.log("it worked");
+  }
+
   get (uri) {
     axios.get(uri)
          .then(response => {
@@ -66,5 +70,3 @@ class API {
          })
   }
 }
-
-export default API;

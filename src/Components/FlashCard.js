@@ -5,8 +5,6 @@ import FlashCardFront from './FlashCardFront';
 import FlashCardBack from './FlashCardBack';
 
 const FlashCard = ({match}) => {
-  console.log("I rendered FlashCard");
-  console.log(match.params);
   return (
     <div>
       <div>
