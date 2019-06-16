@@ -6,6 +6,8 @@ import {
 import './App.css';
 import API from './API';
 import axios from 'axios';
+import { instanceOf } from 'prop-types';
+import { useCookies, withCookies, Cookies } from 'react-cookie';
 
 import Home from './Components/Home';
 import Card from './Components/Card';
@@ -20,12 +22,18 @@ import NewCardForm from './Components/NewCardForm';
 import EditCardForm from './Components/EditCardForm';
 
 class App extends Component {
-  constructor() {
-    super();
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  }
+
+  constructor(props) {
+    super(props);
+
+    const { cookies } = props;
 
     this.state = {
       cards: [],
-      uri: ''
+      uri: cookies.get('uri') || ''
     };
   }
 
@@ -39,6 +47,9 @@ class App extends Component {
         }
       });
       const json = await response.json();
+
+      const { cookies } = this.props;
+      cookies.set('uri', json.uri, { path: '/' })
       this.setState({ uri: json.uri });
 
       this.get();
@@ -74,4 +85,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withCookies(App);
