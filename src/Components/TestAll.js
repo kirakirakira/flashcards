@@ -19,7 +19,7 @@ class TestAll extends Component {
   seeNext = () => {
     if (this.state.currentIndex < this.state.cards.length - 1) {
       this.setState({
-        currentIndex: this.state.currentIndex += 1,
+        currentIndex: this.state.currentIndex + 1,
         showDefinition: false
       })
     } else {

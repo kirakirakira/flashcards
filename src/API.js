@@ -1,8 +1,9 @@
 import axios from 'axios';
+import defaultCards from './data/cards';
 
 class API {
-  get () {
-    axios.get('https://api.myjson.com/bins/125clh')
+  get (uri) {
+    axios.get(uri)
          .then(response => {
            this.setState({
               terms: response.data.terms
@@ -16,7 +17,7 @@ class API {
   create () {
     axios.post('https://api.myjson.com/bins',
           {
-
+            defaultCards
           })
           .then(response => {
             console.log(response);
@@ -26,8 +27,8 @@ class API {
           })
   }
 
-  add (terms) {
-    axios.put('https://api.myjson.com/bins/125clh',
+  add (uri, terms) {
+    axios.put(uri,
           { "terms": terms })
          .then(response => {
            this.setState({
@@ -39,8 +40,8 @@ class API {
          })
   }
 
-  edit (terms) {
-    axios.put('https://api.myjson.com/bins/125clh',
+  edit (uri, terms) {
+    axios.put(uri,
           { "terms": terms })
          .then(response => {
            this.setState({
@@ -52,8 +53,8 @@ class API {
          })
   }
 
-  delete (terms) {
-    axios.put('https://api.myjson.com/bins/125clh',
+  delete (uri, terms) {
+    axios.put(uri,
           { "terms": terms })
          .then(response => {
            this.setState({

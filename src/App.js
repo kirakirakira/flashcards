@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import API from './API';
+import axios from 'axios';
 
 import Home from './Components/Home';
 import Card from './Components/Card';
@@ -24,8 +25,33 @@ class App extends Component {
     super();
 
     this.state = {
-      cards: defaultCards
+      cards: [],
+      uri: ''
     };
+  }
+
+  componentDidMount() {
+    if (this.state.cards.length > 0) {
+
+    } else {
+      axios.post('https://api.myjson.com/bins',
+            {
+              defaultCards
+            })
+            .then(response => {
+              console.log(response);
+              console.log(response.data.uri);
+              this.setState({
+                cards: defaultCards,
+                uri: response.data.uri
+              })
+              console.log(this.state.uri);
+              console.log(this.state.cards);
+            })
+            .catch(error => {
+              console.log('Error posting data', error);
+            })
+    }
   }
 
   render() {
