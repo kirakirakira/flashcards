@@ -4,15 +4,12 @@ import {
   Switch
 } from 'react-router-dom';
 import './App.css';
-import API from './API';
-import axios from 'axios';
 import { instanceOf } from 'prop-types';
-import { useCookies, withCookies, Cookies } from 'react-cookie';
+import { withCookies, Cookies } from 'react-cookie';
 
 import Home from './Components/Home';
 import Card from './Components/Card';
 import CardList from './Components/CardList';
-import FlashCard from './Components/FlashCard';
 import TestAll from './Components/TestAll';
 import TestRandom from './Components/TestRandom';
 
@@ -33,7 +30,8 @@ class App extends Component {
 
     this.state = {
       cards: [],
-      uri: cookies.get('uri') || ''
+      uri: cookies.get('uri') || '',
+      lastId: 102
     };
   }
 
@@ -76,7 +74,7 @@ class App extends Component {
             <Route path="/cards/:index" render={({ match }) => <Card card={this.state.cards[match.params.index]} />} />
             <Route path="/testall" render={() => <TestAll cards={this.state.cards} />} />
             <Route path="/testrandom" render={() => <TestRandom cards={this.state.cards} />} />
-            <Route path="/new" component={NewCardForm} />
+            <Route path="/new" render={() => <NewCardForm cards={this.state.cards} lastId={this.state.lastId} history={this.props.history} uri={this.state.uri} />} />
             <Route path="/edit/:index" render={({ match }) => <EditCardForm history={this.props.history} cards={this.state.cards} match={match} uri={this.state.uri} />} />
           </Switch>
         }
