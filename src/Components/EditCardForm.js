@@ -31,15 +31,13 @@ class EditCardForm extends Component {
       definition
     }
 
-    const response = await fetch(this.props.uri, {
+    await fetch(this.props.uri, {
       method: 'PUT',
       body: JSON.stringify(cards),
       headers: {
         'Content-Type': 'application/json'
       }
     });
-    const json = await response.json();
-    console.log(json);
     this.props.history.push('/cards');
   }
 

@@ -10,6 +10,7 @@ export default ({ cards }) => (
         <li key={card.id}>
           <NavLink to={`/cards/${index}`}>{card.term}</NavLink>
           <NavLink to={`/edit/${index}`}><button>Edit</button></NavLink>
+          <NavLink to={`/delete/${index}`}><button>Delete</button></NavLink>
         </li>
       )}
     </ul>

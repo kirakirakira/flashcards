@@ -17,6 +17,7 @@ import defaultCards from './data/cards';
 
 import NewCardForm from './Components/NewCardForm';
 import EditCardForm from './Components/EditCardForm';
+import DeleteCardForm from './Components/DeleteCardForm';
 
 class App extends Component {
   static propTypes = {
@@ -76,6 +77,7 @@ class App extends Component {
             <Route path="/testrandom" render={() => <TestRandom cards={this.state.cards} />} />
             <Route path="/new" render={() => <NewCardForm cards={this.state.cards} lastId={this.state.lastId} history={this.props.history} uri={this.state.uri} />} />
             <Route path="/edit/:index" render={({ match }) => <EditCardForm history={this.props.history} cards={this.state.cards} match={match} uri={this.state.uri} />} />
+            <Route path="/delete/:index" render={({ match }) => <DeleteCardForm history={this.props.history} cards={this.state.cards} match={match} uri={this.state.uri} />} />
           </Switch>
         }
       </div>
