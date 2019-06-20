@@ -38,7 +38,6 @@ class NewCardForm extends Component {
   render() {
     return (
       <div>
-        <h1>You have rendered the new card form page.</h1>
         <h2>You are creating a new card.</h2>
         <form onSubmit={ (event) => {
           event.preventDefault();

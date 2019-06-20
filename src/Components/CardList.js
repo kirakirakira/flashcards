@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 export default ({ cards }) => (
   <div>
-    <h1>You have rendered the cards page.</h1>
+    <h2>Here are your cards.</h2>
     <Link to="/new"><button>Add a new card</button></Link>
     <ul>
       {cards.map((card, index) =>
@@ -14,5 +14,6 @@ export default ({ cards }) => (
         </li>
       )}
     </ul>
+    <Link to="/"><button>Go back home</button></Link>
   </div>
 );

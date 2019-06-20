@@ -66,7 +66,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Flashcard App!</h1>
+        <h1>Flash cards - Let's study!</h1>
 
         {this.state.got &&
           <Switch>
