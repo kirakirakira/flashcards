@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
 export default ({ cards }) => (
-  <div>
+  <Container>
     <h2>Here are your cards.</h2>
     <Link to="/new"><button>Add a new card</button></Link>
     <ul>
@@ -15,5 +16,5 @@ export default ({ cards }) => (
       )}
     </ul>
     <Link to="/"><button>Go back home</button></Link>
-  </div>
+  </Container>
 );

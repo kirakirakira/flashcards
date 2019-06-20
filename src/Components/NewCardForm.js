@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import uuidv1 from 'uuid/v1';
+import { Container, Row } from 'react-bootstrap';
 
 class NewCardForm extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class NewCardForm extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <h2>You are creating a new card.</h2>
         <form onSubmit={ (event) => {
           event.preventDefault();
@@ -69,7 +70,7 @@ class NewCardForm extends Component {
           />
           <input type="submit" />
         </form>
-      </div>
+      </Container>
     )
   }
 }

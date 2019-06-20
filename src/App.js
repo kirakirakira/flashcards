@@ -3,7 +3,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Container, Navbar, Nav } from 'react-bootstrap';
 import './App.css';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
@@ -66,12 +66,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home">Flash cards - Let's study!</Navbar.Brand>
+      <Container>
+        <Navbar bg="light" expand="lg" variant="light">
+          <Navbar.Brand href="/" className="nb-brand">Flash cards - Let's study!</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
+            <Nav className="nb-links">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/cards">My Cards</Nav.Link>
               <Nav.Link href="/new">Add A Card</Nav.Link>
@@ -94,7 +94,7 @@ class App extends Component {
             <Route path="/delete/:index" render={({ match }) => <DeleteCardForm history={this.props.history} cards={this.state.cards} match={match} uri={this.state.uri} />} />
           </Switch>
         }
-      </div>
+      </Container>
     )
   }
 }

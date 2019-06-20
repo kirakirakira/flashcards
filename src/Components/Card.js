@@ -1,8 +1,9 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 
 export default ({ card }) => (
-  <div>
-    <div>{card.term}</div>
-    <div>{card.definition}</div>
-  </div>
+  <Container>
+    <div>Term: {card.term}</div>
+    <div>Definition: {card.definition}</div>
+  </Container>
 );
