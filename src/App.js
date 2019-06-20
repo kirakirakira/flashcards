@@ -3,6 +3,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
 import './App.css';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
@@ -66,7 +67,20 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Flash cards - Let's study!</h1>
+        <Navbar bg="light" expand="lg">
+          <Navbar.Brand href="#home">Flash cards - Let's study!</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/cards">My Cards</Nav.Link>
+              <Nav.Link href="/new">Add A Card</Nav.Link>
+              <Nav.Link href="/testall">Test All</Nav.Link>
+              <Nav.Link href="/testrandom">Test Random</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+
 
         {this.state.got &&
           <Switch>
