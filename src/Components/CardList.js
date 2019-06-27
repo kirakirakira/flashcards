@@ -1,20 +1,24 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 
 export default ({ cards }) => (
   <Container>
-    <h2>Here are your cards.</h2>
-    <Link to="/new"><button>Add a new card</button></Link>
+    <h3 id="cardListTitle">Here are your cards.</h3>
     <ul>
       {cards.map((card, index) =>
         <li key={card.id}>
-          <NavLink to={`/cards/${index}`}>{card.term}</NavLink>
-          <NavLink to={`/edit/${index}`}><button>Edit</button></NavLink>
-          <NavLink to={`/delete/${index}`}><button>Delete</button></NavLink>
+          <Row>
+            <Col><NavLink to={`/cards/${index}`} className="term">{card.term}</NavLink></Col>
+            <Col><NavLink to={`/edit/${index}`} className="term"><Button>Edit</Button></NavLink></Col>
+            <Col><NavLink to={`/delete/${index}`} className="term"><Button>Delete</Button></NavLink></Col>
+          </Row>
         </li>
       )}
     </ul>
-    <Link to="/"><button>Go back home</button></Link>
+    <Row>
+      <Link to="/" id="goHomeButton"><Button>Go back home</Button></Link>
+      <Link to="/new"><Button>Add a new card</Button></Link>
+    </Row>
   </Container>
 );

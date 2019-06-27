@@ -44,8 +44,7 @@ class EditCardForm extends Component {
   render() {
     return (
       <div>
-        <h1>You have rendered the edit card form page.</h1>
-        <h2>You are editing at {this.state.pendingIndex}.</h2>
+        <h2>You are editing {this.state.termInput}.</h2>
         <form onSubmit={ (event) => {
           event.preventDefault();
           this.updateTerm(this.state.termInput, this.state.definitionInput, this.state.pendingIndex);
@@ -74,7 +73,7 @@ class EditCardForm extends Component {
               })
             }}
           />
-          <input type="submit" />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     )

@@ -67,7 +67,7 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <Navbar bg="light" expand="lg" variant="light">
+        <Navbar expand="lg" className="nb">
           <Navbar.Brand href="/" className="nb-brand">Flash cards - Let's study!</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

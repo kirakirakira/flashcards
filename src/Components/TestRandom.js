@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 
 class TestRandom extends Component {
   constructor(props) {
@@ -26,17 +27,17 @@ class TestRandom extends Component {
 
   render() {
     return (
-      <div>
+      <div id="testRandomBlock">
         Term: {this.state.cards[this.state.randomIndex].term}
         {this.state.showDefinition ?
           <div>
-            <p>Definition: {this.state.cards[this.state.randomIndex].definition}</p>
+            <p className="definition">Definition: {this.state.cards[this.state.randomIndex].definition}</p>
           </div> :
           null
         }
-        <div>
-          <button onClick={this.seeDefinition}>See Definition</button>
-          <button onClick={this.randomizeTerms}>Randomize</button>
+        <div className="testButtons">
+          <Button onClick={this.seeDefinition} id="seeDefButton">See Definition</Button>
+          <Button onClick={this.randomizeTerms}>Randomize</Button>
         </div>
       </div>
     )

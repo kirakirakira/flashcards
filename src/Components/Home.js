@@ -1,16 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Card } from 'react-bootstrap';
 
 const Home = props => (
   <div>
-    <h1></h1>
-    <h2>I don't usually use flash cards when I study</h2>
-    <ul>
-      <li><Link to="/cards">View flashcards</Link></li>
-      <li><Link to="/testrandom">Test me with random cards</Link></li>
-      <li><Link to="/testall">Test all cards in order</Link></li>
-    </ul>
-    <h2>but when I do, I use this app.</h2>
+    <div className="homeLinks">
+      <Link to="/cards"><Button size="lg" block className="homeButtonLink">View flashcards</Button></Link>
+      <Link to="/testrandom"><Button size="lg" block className="homeButtonLink">Test me with random cards</Button></Link>
+      <Link to="/testall"><Button size="lg" block className="homeButtonLink">Test all cards in order</Button></Link>
+    </div>
+    <Card className="testimonial">
+      <Card.Header>Testimonial</Card.Header>
+      <Card.Body>
+        <blockquote className="blockquote mb-0">
+          <p>
+            I don't usually use flash cards when I study, but when I do, I use this app.
+          </p>
+          <footer className="blockquote-footer">
+            Someone famous
+          </footer>
+        </blockquote>
+      </Card.Body>
+    </Card>
   </div>
 )
 

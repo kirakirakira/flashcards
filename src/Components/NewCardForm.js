@@ -68,7 +68,7 @@ class NewCardForm extends Component {
               })
             }}
           />
-          <input type="submit" />
+          <input type="submit" value="Submit" />
         </form>
       </Container>
     )
