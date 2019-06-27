@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import uuidv1 from 'uuid/v1';
-import { Container, Row } from 'react-bootstrap';
+import { Button, Container, Form, Row } from 'react-bootstrap';
 
 class NewCardForm extends Component {
   constructor(props) {
@@ -40,36 +40,46 @@ class NewCardForm extends Component {
     return (
       <Container>
         <h2>You are creating a new card.</h2>
-        <form onSubmit={ (event) => {
+        <Form onSubmit={ (event) => {
           event.preventDefault();
           this.addTerm(this.state.termInput, this.state.definitionInput);
         }}>
-          <label>Term: </label>
-          <input
-            type="text"
-            id="term"
-            value={this.state.termInput}
-            onChange={ (event) => {
-              event.preventDefault();
-              this.setState({
-                termInput: event.target.value
-              })
-            }}
-          />
-          <label>Definition: </label>
-          <input
-            type="text"
-            id="definition"
-            value={this.state.definitionInput}
-            onChange={ (event) => {
-              event.preventDefault();
-              this.setState({
-                definitionInput: event.target.value
-              })
-            }}
-          />
-          <input type="submit" value="Submit" />
-        </form>
+          <Form.Group controlId="formTerm">
+            <Form.Label>Term</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter term"
+              id="term"
+              value={this.state.termInput}
+              onChange={ (event) => {
+                event.preventDefault();
+                this.setState({
+                  termInput: event.target.value
+                })
+              }}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formDefinition">
+            <Form.Label>Definition</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter definition"
+              id="definition"
+              value={this.state.definitionInput}
+              onChange={ (event) => {
+                event.preventDefault();
+                this.setState({
+                  definitionInput: event.target.value
+                })
+              }}
+            />
+          </Form.Group>
+
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
       </Container>
     )
   }
