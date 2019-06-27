@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import uuidv1 from 'uuid/v1';
-import { Button, Container, Form, Row } from 'react-bootstrap';
+import { Button, Card, Container, Form, Row } from 'react-bootstrap';
 
 class NewCardForm extends Component {
   constructor(props) {
@@ -40,6 +40,7 @@ class NewCardForm extends Component {
     return (
       <Container>
         <h2>You are creating a new card.</h2>
+
         <Form onSubmit={ (event) => {
           event.preventDefault();
           this.addTerm(this.state.termInput, this.state.definitionInput);
@@ -80,6 +81,13 @@ class NewCardForm extends Component {
             Submit
           </Button>
         </Form>
+
+        <Card style={{ width: '18rem' }}>
+          <Card.Title>Preview of your card</Card.Title>
+          <Card.Text>Term: {this.state.termInput}</Card.Text>
+          <Card.Text>Definition: {this.state.definitionInput}</Card.Text>
+        </Card>
+
       </Container>
     )
   }

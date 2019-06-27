@@ -108,3 +108,12 @@ input {
 .catchyPhrase {
   margin-top: 20px;
 }
+
+.card {
+  margin-top: 20px;
+}
+
+.card-title, .card-text {
+  margin-top: 5px;
+  margin-left: 10px;
+}
