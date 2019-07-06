@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Card, Container, Form, Row } from 'react-bootstrap';
 
 class EditCardForm extends Component {
   constructor(props) {
@@ -45,36 +46,43 @@ class EditCardForm extends Component {
     return (
       <div>
         <h2>You are editing {this.state.termInput}.</h2>
-        <form onSubmit={ (event) => {
+        <Form onSubmit={ (event) => {
           event.preventDefault();
           this.updateTerm(this.state.termInput, this.state.definitionInput, this.state.pendingIndex);
         }}>
-          <label>Term: </label>
-          <input
-            type="text"
-            id="term"
-            value={this.state.termInput}
-            onChange={ (event) => {
-              event.preventDefault();
-              this.setState({
-                termInput: event.target.value
-              })
-            }}
-          />
-          <label>Definition: </label>
-          <input
-            type="text"
-            id="definition"
-            value={this.state.definitionInput}
-            onChange={ (event) => {
-              event.preventDefault();
-              this.setState({
-                definitionInput: event.target.value
-              })
-            }}
-          />
-          <input type="submit" value="Submit" />
-        </form>
+          <Form.Group controlId="formEditTerm">
+            <Form.Label>Term: </Form.Label>
+            <Form.Control
+              type="text"
+              id="term"
+              value={this.state.termInput}
+              onChange={ (event) => {
+                event.preventDefault();
+                this.setState({
+                  termInput: event.target.value
+                })
+              }}
+            />
+          </Form.Group>
+
+          <Form.Group controlId="formEditDefinition">
+            <Form.Label>Definition: </Form.Label>
+            <Form.Control
+              type="text"
+              id="definition"
+              value={this.state.definitionInput}
+              onChange={ (event) => {
+                event.preventDefault();
+                this.setState({
+                  definitionInput: event.target.value
+                })
+              }}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
       </div>
     )
   }

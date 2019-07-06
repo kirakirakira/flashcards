@@ -83,9 +83,11 @@ class NewCardForm extends Component {
         </Form>
 
         <Card style={{ width: '18rem' }}>
-          <Card.Title>Preview of your card</Card.Title>
-          <Card.Text>Term: {this.state.termInput}</Card.Text>
-          <Card.Text>Definition: {this.state.definitionInput}</Card.Text>
+          <Card.Body>
+            <Card.Title>Preview of your card</Card.Title>
+            <Card.Text>Term: {this.state.termInput}</Card.Text>
+            <Card.Text>Definition: {this.state.definitionInput}</Card.Text>
+          </Card.Body>
         </Card>
 
       </Container>
