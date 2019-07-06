@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 class DeleteCardForm extends Component {
   constructor(props) {
@@ -45,23 +48,31 @@ class DeleteCardForm extends Component {
   render() {
     return (
       <div>
-        <h1>You have rendered the delete card form page.</h1>
-        <form onSubmit={ (event) => {
+        <h1>Would you like to delete this term?</h1>
+        <Form onSubmit={ (event) => {
           event.preventDefault();
           this.deleteTerm(this.state.termInput, this.state.definitionInput, this.state.pendingIndex);
         }}>
-          <label>Term: </label>
-          <p>{this.state.termInput}</p>
-          <label>Definition: </label>
-          <p>{this.state.definitionInput}</p>
-          <input type="submit" value="Delete"/>
-        </form>
-        <form onSubmit={ (event) => {
+          <Form.Group controlId="formDelete">
+            <div>
+              <Form.Label>Term: {this.state.termInput}</Form.Label>
+            </div>
+            <div>
+              <Form.Label>Definition: {this.state.definitionInput}</Form.Label>
+            </div>
+            <Button variant="primary" type="submit">
+              <FontAwesomeIcon icon={faTrash} />
+            </Button>
+          </Form.Group>
+        </Form>
+        <Form onSubmit={ (event) => {
           event.preventDefault();
           this.cancel();
         }}>
-          <input type="submit" value="Cancel"/>
-        </form>
+          <Button variant="primary" type="submit">
+            Cancel
+          </Button>
+        </Form>
       </div>
     )
   }
