@@ -38,7 +38,8 @@ class TestAll extends Component {
   render() {
     return (
       <Container>
-        <h3 className="catchyPhrase">Let's review everything.</h3>
+        <h3 className="catchyPhrase">Let's review everything. <span>Card: {this.state.currentIndex+1} of {this.state.cards.length}</span></h3>
+
         <div id="testRandomBlock">
           Term: {this.state.cards[this.state.currentIndex].term}
           {this.state.showDefinition ?
