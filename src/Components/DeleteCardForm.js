@@ -46,7 +46,6 @@ class DeleteCardForm extends Component {
     return (
       <div>
         <h1>You have rendered the delete card form page.</h1>
-        <h2>You are deleting at {this.state.pendingIndex}.</h2>
         <form onSubmit={ (event) => {
           event.preventDefault();
           this.deleteTerm(this.state.termInput, this.state.definitionInput, this.state.pendingIndex);
