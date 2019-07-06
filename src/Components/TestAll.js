@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Container, Row, Tabs, Tab } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Button, Container } from 'react-bootstrap';
 
 class TestAll extends Component {
   constructor(props) {

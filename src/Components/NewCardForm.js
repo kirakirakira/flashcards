@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import uuidv1 from 'uuid/v1';
-import { Button, Card, Container, Form, Row } from 'react-bootstrap';
+import { Button, Card, Container, Form } from 'react-bootstrap';
 
 class NewCardForm extends Component {
   constructor(props) {
