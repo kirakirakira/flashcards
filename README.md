@@ -1,10 +1,9 @@
-# View project here:
-[testmeflashcards](https://testmeflashcards.netlify.com/)
+# View project here: [testmeflashcards](https://testmeflashcards.netlify.com/)
 
 ## About project
 This is a flashcard app that allows a user to add terms and definitions to the app, and then test themselves by shuffling the cards randomly or reviewing each one by one in order.
 
-This app uses the [myjson.com API](myjson.com), which is a simple JSON store to keep your data. It returns a unique uri that you can then call on using GET, POST, and PUT in order to do all 4 CRUD requests.
+This app uses the [myjson.com API](http://www.myjson.com), which is a simple JSON store to keep your data. It returns a unique uri that you can then call on using GET, POST, and PUT in order to do all 4 CRUD requests.
 
 Data is not secure as the uri is available to the browser. The uri is stored in a browser cookie. I used the react-cookie library to do this.
 
