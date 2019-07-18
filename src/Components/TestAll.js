@@ -1,6 +1,8 @@
+// Import statements
 import React, { Component } from 'react';
 import { Button, Container } from 'react-bootstrap';
 
+// Test all flashcards in order
 class TestAll extends Component {
   constructor(props) {
     super(props);

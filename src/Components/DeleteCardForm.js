@@ -1,8 +1,10 @@
+// Import statements
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
+// Delete a flashcard form
 class DeleteCardForm extends Component {
   constructor(props) {
     super(props);
@@ -24,10 +26,7 @@ class DeleteCardForm extends Component {
   }
 
   async deleteTerm(term, definition, index) {
-    console.log(this.props.uri);
-
     const { cards } = this.props;
-
     cards.splice(index, 1);
 
     await fetch(this.props.uri, {
@@ -41,7 +40,6 @@ class DeleteCardForm extends Component {
   }
 
   cancel() {
-    console.log("i clicked cancel");
     this.props.history.push('/cards');
   }
 

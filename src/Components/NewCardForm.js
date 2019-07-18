@@ -1,7 +1,9 @@
+// Import statements
 import React, { Component } from 'react';
 import uuidv1 from 'uuid/v1';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 
+// Create a new flashcard form
 class NewCardForm extends Component {
   constructor(props) {
     super(props);

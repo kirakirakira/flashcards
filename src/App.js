@@ -1,3 +1,4 @@
+// Import statements
 import React, { Component } from 'react';
 import {
   Route,
@@ -20,6 +21,7 @@ import NewCardForm from './Components/NewCardForm';
 import EditCardForm from './Components/EditCardForm';
 import DeleteCardForm from './Components/DeleteCardForm';
 
+// App class
 class App extends Component {
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired
@@ -27,7 +29,6 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
     const { cookies } = props;
 
     this.state = {
@@ -37,6 +38,8 @@ class App extends Component {
     };
   }
 
+  // If there's no uri in state,
+  // post to the myjson api to get a new one
   async componentDidMount() {
     if (this.state.uri === '') {
       const response = await fetch('https://api.myjson.com/bins', {
@@ -48,6 +51,7 @@ class App extends Component {
       });
       const json = await response.json();
 
+      // Save the uri as a cookie
       const { cookies } = this.props;
       cookies.set('uri', json.uri, { path: '/' })
       this.setState({ uri: json.uri });
@@ -58,6 +62,7 @@ class App extends Component {
     }
   }
 
+  // Get data from api
   async get() {
     const response = await fetch(this.state.uri);
     const json = await response.json();

@@ -1,7 +1,9 @@
+// Import statements
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card } from 'react-bootstrap';
 
+// Home page
 const Home = props => (
   <div>
     <div className="homeLinks">
@@ -17,7 +19,7 @@ const Home = props => (
             I don't usually use flash cards when I study, but when I do, I use this app.
           </p>
           <footer className="blockquote-footer">
-            Someone famous
+            Bob Dole
           </footer>
         </blockquote>
       </Card.Body>

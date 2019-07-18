@@ -1,9 +1,11 @@
+// Import statements
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Button, Container, Row, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 
+// Component for viewing list of all flashcards
 export default ({ cards }) => (
   <Container>
     <h3 id="cardListTitle">Here are your cards.</h3>

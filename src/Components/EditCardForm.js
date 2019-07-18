@@ -1,6 +1,8 @@
+// Import statements
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
+// Edit a flashcard form
 class EditCardForm extends Component {
   constructor(props) {
     super(props);
@@ -22,8 +24,6 @@ class EditCardForm extends Component {
   }
 
   async updateTerm(term, definition, index) {
-    console.log(this.props.uri);
-
     const { cards } = this.props;
 
     cards[index] = {
