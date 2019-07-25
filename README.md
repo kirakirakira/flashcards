@@ -10,6 +10,7 @@ Data is not secure as the uri is available to the browser. The uri is stored in 
 ## How to run (directions sourced from Create React App)
 In the project directory, you can run:
 
+### `npm install`
 ### `npm start`
 
 Runs the app in the development mode.<br>
