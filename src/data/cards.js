@@ -15,5 +15,10 @@ export default [
     id: 102,
     term: "Compiler",
     definition: "A compiler is a set of computer programs that transforms one type of source code written in one language into a different source code."
+  },
+  {
+    id: 103,
+    term: "Data structure",
+    definition: "A data structure is a data organization, management, and storage format that enables efficient access and modification."
   }
 ];
